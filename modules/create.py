@@ -1,11 +1,12 @@
 import streamlit as st
 from utils.database import get_database
 from utils.helpers import month_dropdown
+from bson.objectid import ObjectId
 
 def run():
     st.subheader("Add New Record")
     db = get_database()
-    collection = db["bank"]
+    collection = db["economic_data"]
 
     with st.form("add_record_form"):
         year = st.number_input("Year", min_value=1900, max_value=2100, step=1)
@@ -32,3 +33,4 @@ def run():
             result = collection.insert_one(new_record)
             if result.inserted_id:
                 st.success(f"Record added successfully with ID: {result.inserted_id}")
+    

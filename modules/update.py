@@ -6,7 +6,7 @@ from bson.objectid import ObjectId
 def run():
     st.subheader("Update Record")
     db = get_database()
-    collection = db["bank"]
+    collection = db["economic_data"]
 
     record_id = st.text_input("Enter Record ID to Update")
     if record_id:
